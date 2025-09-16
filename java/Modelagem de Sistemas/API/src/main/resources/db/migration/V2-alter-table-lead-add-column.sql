@@ -1,0 +1,1 @@
+alter table tb_lead add cpf char(11) not null;
