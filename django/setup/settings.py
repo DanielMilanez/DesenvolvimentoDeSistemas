@@ -12,10 +12,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+
+from django.conf.global_settings import STATICFILES_DIRS, STATIC_ROOT, MEDIA_ROOT
 from dotenv import load_dotenv
 
-# pip install python-dotenv
 load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +26,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
 SECRET_KEY = str(os.getenv("SECRET_KEY"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'noticias.apps.NoticiasConfig',
-    'associados.apps.AssociadosConfig',
+    'associados.apps.AssociadosConfig'
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'setup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,12 +84,11 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sindcode_full', # O nome do banco de dados MySQL que você criou
-        'USER': 'root',    # Seu usuário MySQL
-        'PASSWORD': '',  # Sua senha MySQL
-        'HOST': 'localhost',        # Ou o IP/nome do host onde o MySQL está rodando
-        'PORT': '3306',             # A porta do MySQL (3306 é a padrão)
-        # Outras opções podem ser adicionadas em 'OPTIONS' se necessário
+        'NAME': 'sindcode_full',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST':'localhost',
+        'PORT':'3306'
     }
 }
 
@@ -118,7 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
-USE_I18N = True
 
 USE_I18N = True
 
@@ -131,11 +130,17 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'setup/static'),
+    os.path.join(BASE_DIR,'setup/static'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_ROOT= os.path.join(BASE_DIR,'media')
+MEDIA_URL ='/media/'
