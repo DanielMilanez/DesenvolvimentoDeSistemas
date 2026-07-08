@@ -7,6 +7,11 @@ final pi = 3.14159265359;
 // Para poupar armazenamento / processamento
 // Mas isso é apenas valido para variáveis imutaveis
 
+/*
+  CONST é usado para definir o valor fixo de uma variável em tempo de compilação
+  FINAL é usado para definir um valor constante em tempo de execução
+*/
+
 void main(List<String> args) {
   double? raio; // Pode armazenar um double ou null o prefixo ? mostra ao compilador que ele pode retornar nulo
 

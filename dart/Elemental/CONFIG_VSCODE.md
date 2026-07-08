@@ -1,6 +1,6 @@
 # IMPORTANTE
 
-Para executar um programa no vscode, crie uma pasta .vscode adicione um novo arquivo chamado `settings.json` e escreva o código:
+Para executar um programa diretamente no terminal do vscode, crie uma pasta .vscode adicione um novo arquivo chamado `settings.json` e escreva o código:
 
 ```json
 
