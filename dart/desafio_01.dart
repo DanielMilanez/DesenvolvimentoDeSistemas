@@ -37,7 +37,7 @@ void main(List<String> args) {
     print("#" * (i + 1));
   }
 
-  /*==================================== RESPOSTA */
+  /*===================== RESPOSTA =================== */
   for(var valor = "#"; valor != "######"; valor += "#"){
     print(valor);
   } 
