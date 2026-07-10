@@ -13,11 +13,18 @@
 import 'desafio_02_dependece.dart';
 
 void main(List<String> args) {
-  var carroVermelho = Carro(0, 300, 330);
+  var carroVermelho = Carro(5, 330);
 
-  print(carroVermelho.acc(10));
-  print(carroVermelho.acc(20));
-  print(carroVermelho.acc(30));
-  print(carroVermelho.acc(40));
-  for(int i = 0; i < 20; ++i) print(carroVermelho.acc(40));
+  do{
+    print(carroVermelho.acc(5));
+  } while(!carroVermelho.outOfLimit());
+
+  do{
+    print(carroVermelho.dess(5));
+  } while(!carroVermelho.outOfLimit());
+
+  carroVermelho.dess(5);
+
+  carroVermelho.velocidadeAtual = 20;
+  print(carroVermelho);
 }

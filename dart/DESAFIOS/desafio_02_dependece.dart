@@ -1,41 +1,34 @@
-/// Representa um carro com controle de velocidade.
-///
-/// A classe permite acelerar e desacelerar o veículo,
-/// respeitando um limite de velocidade e uma velocidade máxima.
 class Carro{
-  int spd     = 0;
-  int limit   = 0;
-  int max_spd = 0;
+  int _spd     = 0;
+  int max__spd = 0;
  
-  Carro([this.spd = 0, this.limit = 60, this.max_spd = 30]);
+  Carro([this._spd = 0, this.max__spd = 30]);
 
-  int atualSpeed() => spd;
-  bool outOfLimit() => spd >= max_spd;
-    
+  int get velocidadeAtual => _spd;
+  void set velocidadeAtual(int nw_spd){
+    if ((_spd - nw_spd).abs() <= 5) this._spd = nw_spd;
+  }
+
+  int atualSpeed() => _spd;
+  bool outOfLimit() => (_spd == max__spd) || (_spd <= 0);
+
   String acc(int value){
-    if(spd < max_spd){
-      if (spd + value >= limit){
-        spd = limit;
-        return "${limit}Km/h - Já está na potência máxima";
-      }
-      else{
-        spd += value;
-      }
-    }
-    else {
-      return "${max_spd}Km/h - Já está na velocidade máxima";
-    } 
-
-    return (spd).toString();
+    if (_spd + value >= max__spd){
+        _spd = max__spd;
+        return "${_spd} Km/h - Já está na velocidade máxima";
+      } 
+    else _spd += value;
+    return (_spd).toString();
   } 
-  String dess(int value){
-    if(spd > 0){
-      spd -= value;
-    }
-    else {
-      return "Já está parado!";
-    } 
 
-    return (spd).toString();
+  String dess(int value){
+    if(_spd - value >= 1) _spd -= value;
+    else {
+      _spd = 0;
+      return "${_spd} Km/h - Já está parado!";
+    }
+    return (_spd).toString();
   }  
+
+  String toString() => _spd.toString();
 }
